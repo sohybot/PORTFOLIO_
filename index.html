@@ -96,21 +96,43 @@
       max-width: 820px;
     }
 
-    /* SKILLS */
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
+    /* ABOUT */
+    #about p {
+      font-size: 20px; 
+      line-height: 1.8;
+      font-weight: 500;
+      max-width: 900px;
+      background: linear-gradient(90deg, #c7c9ff, #a5b4fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .skill {
-      padding: 12px 18px;
-      background: #1e293b;
-      border-radius: 999px;
-      font-size: 14px;
-      color: #e5e7eb;
-      border: 1px solid rgba(85, 91, 244, 0.3);
-    }
+/* SKILLS */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.skill {
+  padding: 12px 18px;
+  background:#2a3975;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #ffffff; 
+  border: 1px solid rgba(85, 91, 244, 0.3);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.skill:hover {
+  transform: translateY(-4px) scale(1.05);
+  border-color: #555bf4;
+  box-shadow: 0 8px 20px rgba(85, 91, 244, 0.35);
+  background: linear-gradient(135deg, #555bf4, #a5b4fc);
+  color: #ffffff;
+}
+
 
     /* PROJECTS */
     .projects {
@@ -140,7 +162,7 @@
     }
 
     .tech {
-      font-size: 13px;
+      font-size: 18px;
       color: #a5b4fc;
       margin-top: 14px;
     }
@@ -198,7 +220,9 @@
       </h1>
       <p>
         안녕하세요, 저는 박소현입니다.<br />
-        AI · LLM · Cloud 기반 서비스를 설계하고 구현하는 개발자입니다.
+        기술을 이해하는 시선으로 사용자 경험을 설계하고,
+        AI 기반 서비스 프로젝트를 통해
+        문제를 구조화하고 흐름으로 풀어내는 과정을 경험해왔습니다.
       </p>
     </div>
   </section>
@@ -207,8 +231,7 @@
   <section id="about">
     <h2>About</h2>
     <p>
-      AI 기반 서비스 기획부터 데이터 처리, LLM 활용,
-      클라우드 배포까지 전체 사이클을 경험했습니다.
+      AI 기반 서비스 기획부터 데이터 처리, LLM 활용, 클라우드 배포까지 전체 사이클을 경험했습니다.
       글로벌 환경에서도 통하는 구조적 문제 해결을 지향합니다.
     </p>
   </section>
@@ -218,21 +241,22 @@
     <h2>Skills</h2>
     <div class="skills">
       <div class="skill">Python</div>
-      <div class="skill">FastAPI</div>
       <div class="skill">React</div>
+      <div class="skill">SQL</div>
       <div class="skill">Azure</div>
-      <div class="skill">LLM (GPT)</div>
+      <div class="skill">LLM</div>
       <div class="skill">RAG</div>
       <div class="skill">YOLO</div>
       <div class="skill">Custom Vision</div>
       <div class="skill">GitHub</div>
+      <div class="skill">openCV</div>
+      <div class="skill">AWS</div>
     </div>
   </section>
 
   <!-- PROJECTS -->
   <section id="projects">
     <h2>Projects</h2>
-
     <div class="projects">
       <a href="https://github.com/yourname/project1" target="_blank" class="project">
         <h3>AI 약물 × 음식 상호작용 플랫폼</h3>
@@ -252,7 +276,7 @@
           K-콘텐츠 취향 맞춤 여행 루트 추천 서비스
         </p>
         <div class="tech">
-          FastAPI · Azure · GPT · RAG · OCR
+          FastAPI · Azure · GPT · RAG · OCR · LLM
         </div>
       </a>
     </div>
