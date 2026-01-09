@@ -6,6 +6,18 @@
   <title>SOHYP | Portfolio</title>
 
   <style>
+    :root {
+      --bg-main: #141e3c;
+      --bg-section: #1b2550;
+      --card-bg: #202c63;
+
+      --primary: #7d82ff;
+      --secondary: #a5b4fc;
+
+      --text-main: #f8fafc;
+      --text-sub: #c7d2fe;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -14,9 +26,9 @@
     }
 
     body {
-      background: #0f172a;
-      color: #e5e7eb;
-      line-height: 1.6;
+      background: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.7;
     }
 
     a {
@@ -29,8 +41,8 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(15, 23, 42, 0.9);
-      backdrop-filter: blur(10px);
+      background: rgba(20, 30, 60, 0.85);
+      backdrop-filter: blur(12px);
       padding: 16px 48px;
       display: flex;
       justify-content: space-between;
@@ -40,9 +52,8 @@
 
     .logo {
       font-size: 22px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      color: #555bf4;
+      font-weight: 900;
+      color: var(--primary);
     }
 
     nav ul {
@@ -52,7 +63,7 @@
     }
 
     nav a:hover {
-      color: #555bf4;
+      color: var(--secondary);
     }
 
     /* SECTION */
@@ -60,17 +71,36 @@
       padding: 140px 80px;
       max-width: 1200px;
       margin: auto;
+      text-align: center;
+
+      /* fade-in default */
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section:not(.home) {
+      background: var(--bg-section);
+      border-radius: 32px;
+      margin-bottom: 120px;
     }
 
     h2 {
-      font-size: 36px;
-      margin-bottom: 32px;
-      color: #555bf4;
+      font-size: 40px;
+      margin-bottom: 24px;
+      color: var(--primary);
     }
 
     p {
-      color: #c7c9ff;
-      max-width: 760px;
+      color: var(--text-sub);
+      max-width: 820px;
+      margin: 0 auto;
+      font-size: 18px;
     }
 
     /* HOME */
@@ -78,119 +108,141 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
+      text-align: left;
+      background: none;
+      opacity: 1;
+      transform: none;
     }
 
     .home h1 {
       font-size: 72px;
       font-weight: 900;
-      line-height: 1.1;
       margin-bottom: 24px;
     }
 
     .home h1 span {
-      color: #555bf4;
-    }
-
-    .home p {
-      font-size: 20px;
-      max-width: 820px;
+      color: var(--primary);
     }
 
     /* ABOUT */
     #about p {
-      font-size: 20px; 
+      font-size: 20px;
       line-height: 1.8;
       font-weight: 500;
-      max-width: 900px;
-      background: linear-gradient(90deg, #c7c9ff, #a5b4fc);
+      background: linear-gradient(90deg, #e0e7ff, #a5b4fc);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-/* SKILLS */
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-}
+    /* SKILLS */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      margin-top: 32px;
+    }
 
-.skill {
-  padding: 12px 18px;
-  background:#2a3975;
-  border-radius: 5px;
-  font-size: 14px;
-  color: #ffffff; 
-  border: 1px solid rgba(85, 91, 244, 0.3);
-  transition: all 0.3s ease;
-  cursor: default;
-}
+    .skill {
+      padding: 12px 22px;
+      background: linear-gradient(135deg, #2c367a, #202c63);
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      border: 1px solid rgba(125,130,255,0.35);
+      transition: all 0.25s ease;
+    }
 
-.skill:hover {
-  transform: translateY(-4px) scale(1.05);
-  border-color: #555bf4;
-  box-shadow: 0 8px 20px rgba(85, 91, 244, 0.35);
-  background: linear-gradient(135deg, #555bf4, #a5b4fc);
-  color: #ffffff;
-}
-
+    .skill:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(125,130,255,0.35);
+      background: linear-gradient(135deg, #7d82ff, #a5b4fc);
+      color: #0f172a;
+    }
 
     /* PROJECTS */
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 28px;
+      gap: 32px;
+      margin-top: 40px;
+      text-align: left;
     }
 
     .project {
-      background: #1e293b;
-      border-radius: 18px;
-      padding: 28px;
-      transition: 0.3s ease;
-      display: block;
-      border: 1px solid rgba(85, 91, 244, 0.15);
+      background: linear-gradient(180deg, #1f2a5c, #1b2550);
+      border-radius: 24px;
+      padding: 32px;
+      border: 1px solid rgba(125,130,255,0.2);
+      transition: all 0.3s ease;
     }
 
     .project:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(85, 91, 244, 0.25);
-      border-color: #555bf4;
+      transform: translateY(-10px);
+      box-shadow: 0 24px 50px rgba(125,130,255,0.35);
     }
 
     .project h3 {
-      margin-bottom: 14px;
-      color: #555bf4;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .project p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .project .en {
+      font-size: 15px;
+      color: #dbeafe;
+      opacity: 0.85;
     }
 
     .tech {
-      font-size: 18px;
-      color: #a5b4fc;
+      font-size: 14px;
+      color: var(--secondary);
       margin-top: 14px;
     }
 
     /* CONTACT */
     .contact a {
-      color: #555bf4;
       display: block;
-      margin-bottom: 12px;
-      font-size: 16px;
+      margin: 12px 0;
+      font-size: 18px;
+      color: var(--secondary);
     }
 
-    .contact a:hover {
-      text-decoration: underline;
+.resume-btn {
+  display: block;
+  width: fit-content;
+  margin: 28px auto 0;
+
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #7d82ff, #a5b4fc);
+  color: #0f172a;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 16px;
+
+  transition: transform 0.25s ease;
+}
+
+    .resume-btn:hover {
+      transform: translateY(-4px);
     }
 
     footer {
       text-align: center;
       padding: 48px;
       font-size: 13px;
-      color: #a5b4fc;
+      color: var(--secondary);
     }
 
     @media (max-width: 768px) {
       section {
         padding: 120px 24px;
       }
-
       .home h1 {
         font-size: 48px;
       }
@@ -200,99 +252,121 @@
 
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#home" class="logo">SOHYP</a>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<nav>
+  <a href="#home" class="logo">SOHYP</a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-  <!-- HOME -->
-  <section class="home" id="home">
-    <div>
-      <h1>
-        Hello,<br />
-        I'm <span>Sohyeon Park</span>
-      </h1>
-      <p>
-        안녕하세요, 저는 박소현입니다.<br />
-        기술을 이해하는 시선으로 사용자 경험을 설계하고,
-        AI 기반 서비스 프로젝트를 통해
-        문제를 구조화하고 흐름으로 풀어내는 과정을 경험해왔습니다.
-      </p>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <h2>About</h2>
+<section class="home" id="home">
+  <div>
+    <h1>Hello,<br />I'm <span>Sohyeon Park</span></h1>
     <p>
-      AI 기반 서비스 기획부터 데이터 처리, LLM 활용, 클라우드 배포까지 전체 사이클을 경험했습니다.
-      글로벌 환경에서도 통하는 구조적 문제 해결을 지향합니다.
+      기술을 이해하고, 사용자 경험으로 연결하는 개발자입니다.<br />
+      AI 기반 서비스 프로젝트를 통해 문제를 정의하고 구조화해왔습니다.
+      <br /><br />
+      I design and build AI-driven services<br />
+      by bridging technology, user experience, and problem-solving.
     </p>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skills">
-      <div class="skill">Python</div>
-      <div class="skill">React</div>
-      <div class="skill">SQL</div>
-      <div class="skill">Azure</div>
-      <div class="skill">LLM</div>
-      <div class="skill">RAG</div>
-      <div class="skill">YOLO</div>
-      <div class="skill">Custom Vision</div>
-      <div class="skill">GitHub</div>
-      <div class="skill">openCV</div>
-      <div class="skill">AWS</div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects">
-      <a href="https://github.com/yourname/project1" target="_blank" class="project">
-        <h3>AI 약물 × 음식 상호작용 플랫폼</h3>
-        <p>
-          알약 이미지 인식과 음식 성분 분석을 통해
-          약효 방해 여부를 안내하는 AI 헬스케어 서비스
-        </p>
-        <div class="tech">
-          Python · FastAPI · Azure · YOLO · Custom Vision
-        </div>
-      </a>
-
-      <a href="https://github.com/yourname/ktrip" target="_blank" class="project">
-        <h3>KTrip – AI Travel Recommendation</h3>
-        <p>
-          LLM + RAG 기반 외국인 대상
-          K-콘텐츠 취향 맞춤 여행 루트 추천 서비스
-        </p>
-        <div class="tech">
-          FastAPI · Azure · GPT · RAG · OCR · LLM
-        </div>
+    <div class="resume-wrap">
+      <a href="resume.pdf" class="resume-btn" download>
+        <span>⬇</span> Download Resume
       </a>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="contact">
-    <h2>Contact</h2>
-    <a href="mailto:yourmail@email.com">📧 yourmail@email.com</a>
-    <a href="https://github.com/yourname" target="_blank">🐙 GitHub</a>
-    <a href="https://linkedin.com/in/yourname" target="_blank">💼 LinkedIn</a>
-  </section>
+<section id="about">
+  <h2>About</h2>
+  <p>
+AI 기반 서비스 기획부터 데이터 처리, LLM 활용, 클라우드 배포까지
+서비스 전 과정을 경험했습니다.
+글로벌 환경에서도 통하는 구조적 문제 해결을 지향합니다.
+<br />
+I have experience across the full lifecycle of AI-driven services,
+from planning and data processing to LLM integration and cloud deployment.
+I focus on structured problem-solving that scales in global environments.
+  </p>
+</section>
 
-  <footer>
-    © 2026 SOHYP. All rights reserved.
-  </footer>
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div class="skill">Python</div>
+    <div class="skill">React</div>
+    <div class="skill">SQL</div>
+    <div class="skill">Azure</div>
+    <div class="skill">AWS</div>
+    <div class="skill">LLM</div>
+    <div class="skill">RAG</div>
+    <div class="skill">YOLO</div>
+    <div class="skill">Custom Vision</div>
+    <div class="skill">OpenCV</div>
+    <div class="skill">GitHub</div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects">
+
+    <div class="project">
+      <h3>AI Drug × Food Interaction Platform</h3>
+      <p>
+        알약 이미지 인식과 음식 성분 분석을 통해 약물 상호작용을 안내하는 AI 헬스케어 서비스
+      </p>
+      <p class="en">
+        An AI healthcare service that detects pills via image recognition
+        and analyzes food ingredients to prevent drug–food interactions.
+      </p>
+      <div class="tech">Python · FastAPI · Azure · YOLO · Custom Vision</div>
+    </div>
+
+    <div class="project">
+      <h3>KTrip – AI Travel Recommendation</h3>
+      <p>
+        외국인을 위한 K-콘텐츠 취향 기반 여행 루트 추천 서비스
+      </p>
+      <p class="en">
+        An AI-powered travel recommendation service using LLM + RAG
+        to generate personalized routes based on K-content preferences.
+      </p>
+      <div class="tech">FastAPI · Azure · GPT · RAG · OCR</div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Contact</h2>
+  <a href="mailto:yourmail@email.com">📧 yourmail@email.com</a>
+  <a href="https://github.com/yourname" target="_blank">🐙 GitHub</a>
+  <a href="https://linkedin.com/in/yourname" target="_blank">💼 LinkedIn</a>
+
+</section>
+
+<footer>
+  © 2026 SOHYP. All rights reserved.
+</footer>
+
+<script>
+  const sections = document.querySelectorAll("section:not(.home)");
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  sections.forEach(section => observer.observe(section));
+</script>
 
 </body>
 </html>
