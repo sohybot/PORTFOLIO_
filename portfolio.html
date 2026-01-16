@@ -11,7 +11,7 @@
       --bg-section: #1b2550;
       --card-bg: #202c63;
 
-      --primary: #7d82ff;
+      --primary: #ffb347;
       --secondary: #a5b4fc;
 
       --text-main: #f8fafc;
@@ -43,7 +43,7 @@
       width: 100%;
       background: rgba(20, 30, 60, 0.85);
       backdrop-filter: blur(12px);
-      padding: 16px 48px;
+      padding: 12px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -58,7 +58,7 @@
 
     nav ul {
       display: flex;
-      gap: 28px;
+      gap: 16px;
       list-style: none;
     }
 
@@ -68,8 +68,8 @@
 
     /* SECTION */
     section {
-      padding: 140px 80px;
-      max-width: 1200px;
+      padding: 120px 40px;
+      max-width: 1000px;
       margin: auto;
       text-align: center;
 
@@ -87,25 +87,26 @@
     section:not(.home) {
       background: var(--bg-section);
       border-radius: 32px;
-      margin-bottom: 120px;
+      margin-bottom: 80px;
     }
 
     h2 {
-      font-size: 40px;
-      margin-bottom: 24px;
+      font-size: 36px;
+      margin-bottom: 20px;
       color: var(--primary);
     }
 
     p {
       color: var(--text-sub);
-      max-width: 820px;
-      margin: 0 auto;
-      font-size: 18px;
+      max-width: 760px;
+      margin: 0 auto 16px;
+      font-size: 17px;
+      line-height: 1.8;
     }
 
     /* HOME */
     .home {
-      min-height: 100vh;
+      min-height: 90vh;
       display: flex;
       align-items: center;
       text-align: left;
@@ -115,13 +116,18 @@
     }
 
     .home h1 {
-      font-size: 72px;
+      font-size: 56px;
       font-weight: 900;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .home h1 span {
       color: var(--primary);
+    }
+
+    .home p {
+      font-size: 18px;
+      line-height: 1.7;
     }
 
     /* ABOUT */
@@ -138,16 +144,16 @@
     .skills {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 12px;
       justify-content: center;
-      margin-top: 32px;
+      margin-top: 24px;
     }
 
     .skill {
-      padding: 12px 22px;
+      padding: 10px 18px;
       background: linear-gradient(135deg, #2c367a, #202c63);
       border-radius: 999px;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
       color: #fff;
       border: 1px solid rgba(125,130,255,0.35);
@@ -157,94 +163,125 @@
     .skill:hover {
       transform: translateY(-6px);
       box-shadow: 0 12px 28px rgba(125,130,255,0.35);
-      background: linear-gradient(135deg, #7d82ff, #a5b4fc);
+      background: linear-gradient(135deg, #ffb347, #a5b4fc);
       color: #0f172a;
     }
 
     /* PROJECTS */
     .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 32px;
-      margin-top: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
       text-align: left;
     }
 
     .project {
       background: linear-gradient(180deg, #1f2a5c, #1b2550);
-      border-radius: 24px;
-      padding: 32px;
+      border-radius: 20px;
+      padding: 24px;
       border: 1px solid rgba(125,130,255,0.2);
       transition: all 0.3s ease;
+      position: relative;
+      display: block;
     }
 
     .project:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 24px 50px rgba(125,130,255,0.35);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(125,130,255,0.35);
     }
 
     .project h3 {
       color: var(--primary);
-      margin-bottom: 12px;
+      margin-bottom: 8px;
+      font-size: 20px;
     }
 
     .project p {
-      font-size: 16px;
+      font-size: 15px;
       margin-bottom: 10px;
     }
 
     .project .en {
-      font-size: 15px;
+      font-size: 14px;
       color: #dbeafe;
       opacity: 0.85;
     }
 
     .tech {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--secondary);
-      margin-top: 14px;
+      margin-top: 12px;
     }
 
     /* CONTACT */
     .contact a {
       display: block;
-      margin: 12px 0;
-      font-size: 18px;
+      margin: 8px 0;
+      font-size: 16px;
       color: var(--secondary);
     }
 
-.resume-btn {
-  display: block;
-  width: fit-content;
-  margin: 28px auto 0;
-
-  padding: 12px 20px;
-  background: linear-gradient(135deg, #7d82ff, #a5b4fc);
-  color: #0f172a;
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: 16px;
-
-  transition: transform 0.25s ease;
-}
+    /* RESUME BUTTON */
+    .resume-btn {
+      display: block;
+      width: fit-content;
+      margin: 24px auto 0;
+      padding: 10px 18px;
+      background: linear-gradient(135deg, #ffb347, #a5b4fc);
+      color: #0f172a;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: transform 0.25s ease;
+    }
 
     .resume-btn:hover {
       transform: translateY(-4px);
     }
 
+    /* FOOTER */
     footer {
       text-align: center;
-      padding: 48px;
-      font-size: 13px;
+      padding: 32px;
+      font-size: 12px;
       color: var(--secondary);
     }
 
+    /* MOBILE */
     @media (max-width: 768px) {
       section {
-        padding: 120px 24px;
+        padding: 80px 20px;
       }
+
       .home h1 {
-        font-size: 48px;
+        font-size: 36px;
+      }
+
+      .home p {
+        font-size: 16px;
+      }
+
+      h2 {
+        font-size: 28px;
+      }
+
+      .project h3 {
+        font-size: 18px;
+      }
+
+      .project p,
+      .project .en {
+        font-size: 14px;
+      }
+
+      .tech {
+        font-size: 12px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 12px;
       }
     }
   </style>
@@ -277,7 +314,8 @@
         <span>⬇</span> Download Resume
       </a>
     </div>
-  </section>
+  </div>
+</section>
 
 <section id="about">
   <h2>About</h2>
@@ -313,39 +351,46 @@ I focus on structured problem-solving that scales in global environments.
   <h2>Projects</h2>
   <div class="projects">
 
-    <div class="project">
-      <h3>AI Drug × Food Interaction Platform</h3>
-      <p>
-        알약 이미지 인식과 음식 성분 분석을 통해 약물 상호작용을 안내하는 AI 헬스케어 서비스
-      </p>
-      <p class="en">
-        An AI healthcare service that detects pills via image recognition
-        and analyzes food ingredients to prevent drug–food interactions.
-      </p>
-      <div class="tech">Python · FastAPI · Azure · YOLO · Custom Vision</div>
-    </div>
+<a href="https://github.com/sohybot/pill-food-interaction"
+   target="_blank"
+   class="project">
 
-    <div class="project">
-      <h3>KTrip – AI Travel Recommendation</h3>
-      <p>
-        외국인을 위한 K-콘텐츠 취향 기반 여행 루트 추천 서비스
-      </p>
-      <p class="en">
-        An AI-powered travel recommendation service using LLM + RAG
-        to generate personalized routes based on K-content preferences.
-      </p>
-      <div class="tech">FastAPI · Azure · GPT · RAG · OCR</div>
-    </div>
+  <h3>AI Drug × Food Interaction Platform</h3>
+  <p>
+    알약 이미지 인식과 음식 성분 분석을 통해 약물 상호작용을 안내하는 AI 헬스케어 서비스
+  </p>
+  <p class="en">
+    An AI healthcare service that detects pills via image recognition
+    and analyzes food ingredients to prevent drug–food interactions.
+  </p>
+  <div class="tech">Python · FastAPI · Azure · YOLO · Custom Vision</div>
+
+</a>
+
+<a href="https://github.com/sohybot/Personalized-K-Content-Travel-Planner"
+   target="_blank"
+   class="project">
+
+  <h3>KTrip – AI Travel Recommendation</h3>
+  <p>
+    외국인을 위한 K-콘텐츠 취향 기반 여행 루트 추천 서비스
+  </p>
+  <p class="en">
+    An AI-powered travel recommendation service using LLM + RAG
+    to generate personalized routes based on K-content preferences.
+  </p>
+  <div class="tech">FastAPI · Azure · GPT · RAG · OCR</div>
+
+</a>
 
   </div>
 </section>
 
 <section id="contact" class="contact">
   <h2>Contact</h2>
-  <a href="mailto:yourmail@email.com">📧 yourmail@email.com</a>
-  <a href="https://github.com/yourname" target="_blank">🐙 GitHub</a>
-  <a href="https://linkedin.com/in/yourname" target="_blank">💼 LinkedIn</a>
-
+  <a href="mailto:yourmail@email.com"> yourmail@email.com</a>
+  <a href="https://github.com/sohybot/PORTFOLIO_" target="_blank"> GitHub</a>
+  <a href="https://linkedin.com/in/yourname" target="_blank"> LinkedIn</a>
 </section>
 
 <footer>
