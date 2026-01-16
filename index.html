@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SOHYP | Portfolio</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
   <style>
     :root {
@@ -12,7 +14,7 @@
       --card-bg: #202c63;
 
       --primary: #00d1b2;
-      --secondary: #a5b4fc;
+      --secondary:#8398fc;
 
       --text-main: #f8fafc;
       --text-sub: #c7d2fe;
@@ -214,12 +216,23 @@
       margin-top: 12px;
     }
 
-    /* CONTACT */
-    .contact a {
-      display: block;
-      margin: 8px 0;
-      font-size: 16px;
+    /* CONTACT (수정됨) */
+    .contact-icons {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 30px;
+    }
+
+    .contact-icons a {
+      font-size: 36px;
       color: var(--secondary);
+      transition: all 0.3s ease;
+    }
+
+    .contact-icons a:hover {
+      color: var(--primary);
+      transform: translateY(-8px);
     }
 
     /* RESUME BUTTON */
@@ -266,32 +279,22 @@
         font-size: 28px;
       }
 
-      .project h3 {
-        font-size: 18px;
+      .contact-icons {
+        gap: 25px;
+      }
+      
+      .contact-icons a {
+        font-size: 30px;
       }
 
-      .project p,
-      .project .en {
-        font-size: 14px;
-      }
-
-      .tech {
-        font-size: 12px;
-      }
-
-      /* 상단 네비 수정 */
       nav {
-        padding: 8px 16px;           /* 높이 줄이기 */
+        padding: 8px 16px;
       }
 
       nav ul {
-        flex-direction: row;         /* 가로 정렬 */
-        justify-content: flex-end;   /* 오른쪽 정렬 */
+        flex-direction: row;
+        justify-content: flex-end;
         gap: 12px;
-      }
-
-      nav li {
-        list-style: none;
       }
 
       nav a {
@@ -318,11 +321,11 @@
   <div>
     <h1>Hello,<br />I'm <span>Sohyeon Park</span></h1>
     <p>
-      기술을 이해하고, 사용자 경험으로 연결하는 개발자입니다.<br />
+      AI로 의미 있는 변화를 설계합니다.<br />
       AI 기반 서비스 프로젝트를 통해 문제를 정의하고 구조화해왔습니다.
       <br /><br />
-      I design and build AI-driven services<br />
-      by bridging technology, user experience, and problem-solving.
+     Designing meaningful change with AI.<br />
+	I focus on defining and structuring problems through AI-driven service projects.
     </p>
     <div class="resume-wrap">
       <a href="resume.pdf" class="resume-btn" download>
@@ -403,9 +406,11 @@ I focus on structured problem-solving that scales in global environments.
 
 <section id="contact" class="contact">
   <h2>Contact</h2>
-  <a href="mailto:yourmail@email.com"> yourmail@email.com</a>
-  <a href="https://github.com/sohybot/PORTFOLIO_" target="_blank"> GitHub</a>
-  <a href="https://linkedin.com/in/yourname" target="_blank"> LinkedIn</a>
+  <div class="contact-icons">
+    <a href="mailto:yourmail@email.com" title="Email"><i class="fas fa-envelope"></i></a>
+    <a href="https://github.com/sohybot/PORTFOLIO_" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://linkedin.com/in/yourname" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+  </div>
 </section>
 
 <footer>
