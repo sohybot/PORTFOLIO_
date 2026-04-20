@@ -1231,6 +1231,32 @@
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 3px; }
+
+  /* ── LANG TOGGLE ── */
+  .lang-toggle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    overflow: hidden;
+    margin-left: 0.8rem;
+    position: relative;
+    z-index: 200;
+  }
+  .lang-toggle .lt-opt {
+    padding: 0.28rem 0.65rem;
+    color: var(--muted);
+    transition: background 0.18s, color 0.18s;
+    user-select: none;
+    cursor: pointer;
+    line-height: 1.4;
+  }
+  .lang-toggle .lt-opt.active {
+    font-weight: 700;
+  }
 </style>
 </head>
 <body>
@@ -1246,7 +1272,13 @@
     <li><a href="#prototype">프로토타입</a></li>
     <li><a href="#about">기획자</a></li>
   </ul>
-  <div class="nav-tag">INTERNAL ALPHA</div>
+  <div style="display:flex;align-items:center;gap:0.6rem;position:relative;z-index:200;">
+    <div class="nav-tag">INTERNAL ALPHA</div>
+    <button class="lang-toggle" id="langBtn" aria-label="언어 전환">
+      <span class="lt-opt active" id="lt-ko">한</span>
+      <span class="lt-opt" id="lt-en">ENG</span>
+    </button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -1316,8 +1348,8 @@
 
 <!-- PROBLEM -->
 <section id="problem">
-  <div class="section-label">01 · Problem</div>
-  <h2 class="section-title">왜 경쟁 게임<br>리서치가 힘든가?</h2>
+  <div class="section-label" data-i18n="sec01-label">01 · Problem</div>
+  <h2 class="section-title" data-i18n="sec01-title">왜 경쟁 게임<br>리서치가 힘든가?</h2>
 
   <div class="problem-grid">
     <div>
@@ -1374,8 +1406,8 @@
 
 <!-- SOLUTION -->
 <section id="solution">
-  <div class="section-label">02 · Solution</div>
-  <h2 class="section-title">RivalScope가<br>해결하는 방식</h2>
+  <div class="section-label" data-i18n="sec02-label">02 · Solution</div>
+  <h2 class="section-title" data-i18n="sec02-title">RivalScope가<br>해결하는 방식</h2>
   <p class="section-desc">경쟁 게임명 입력만으로 AI가 최신 정보를 실시간 수집·분석하여 인사이트 카드를 자동 생성합니다.</p>
 
   <div class="solution-steps reveal">
@@ -1421,8 +1453,8 @@
 <section id="features">
   <div class="features-header">
     <div>
-      <div class="section-label">03 · Features</div>
-      <h2 class="section-title">핵심 기능</h2>
+      <div class="section-label" data-i18n="sec03-label">03 · Features</div>
+      <h2 class="section-title" data-i18n="sec03-title">핵심 기능</h2>
     </div>
     <p class="section-desc">단일 분석 요청으로 3가지 인사이트 블록을 자동 생성합니다. 구조화된 결과를 즉시 도출하고 팀 공유 문서로 바로 Export 가능합니다.</p>
   </div>
@@ -1495,8 +1527,8 @@
 
 <!-- TECH STACK -->
 <section id="tech">
-  <div class="section-label">04 · Tech Stack</div>
-  <h2 class="section-title">사용할 AI 도구</h2>
+  <div class="section-label" data-i18n="sec04-label">04 · Tech Stack</div>
+  <h2 class="section-title" data-i18n="sec04-title">사용할 AI 도구</h2>
   <p class="section-desc">Claude Sonnet 4를 메인 추론 엔진으로, 검색과 분석을 하나의 API로 통합합니다.</p>
 
   <div class="tech-layout reveal">
@@ -1526,7 +1558,7 @@
     </div>
 
     <div class="why-box">
-      <h3>왜 Claude인가?</h3>
+      <h3 data-i18n="why-claude-title">왜 Claude인가?</h3>
       <div class="why-item">
         <div class="why-num">01</div>
         <div class="why-content">
@@ -1554,8 +1586,8 @@
 
 <!-- PROTOTYPE -->
 <section id="prototype">
-  <div class="section-label">05 · Prototype</div>
-  <h2 class="section-title">프로토타입</h2>
+  <div class="section-label" data-i18n="sec05-label">05 · Prototype</div>
+  <h2 class="section-title" data-i18n="sec05-title">프로토타입</h2>
   <p class="section-desc">Claude Artifacts 환경에서 단일 HTML 파일로 구현. 설치 없이 브라우저에서 즉시 실행·검증 가능합니다.</p>
 
   <div class="flow-steps-h reveal">
@@ -1612,8 +1644,8 @@
 
 <!-- VALIDATION -->
 <section id="validation">
-  <div class="section-label">06 · Validation</div>
-  <h2 class="section-title">프로토타입 목적</h2>
+  <div class="section-label" data-i18n="sec06-label">06 · Validation</div>
+  <h2 class="section-title" data-i18n="sec06-title">프로토타입 목적</h2>
   <p class="section-desc">단일 도구의 기능 테스트를 넘어, 실제 기획 워크플로우에 AI가 통합될 수 있는지를 판단하는 기준점입니다.</p>
 
   <div class="goal-stat reveal">
@@ -1654,11 +1686,11 @@
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="section-label">07 · About</div>
+  <div class="section-label" data-i18n="sec07-label">07 · About</div>
   <div class="about-grid">
     <div>
       <div class="about-name">박소현</div>
-      <div class="about-role">AI PRODUCT PLANNER</div>
+      <div class="about-role" data-i18n="about-role">AI PRODUCT PLANNER</div>
       <p class="about-text">
         게임 회사의 기획 워크플로우에 AI를 통합하는 데 관심을 갖고 RivalScope를 기획했습니다. 경쟁 게임 분석에 하루를 쏟는 기획자·마케터·사업개발 담당자들의 문제를 직접 해결하고자 Claude AI와 실시간 웹 검색을 결합한 리서치 자동화 도구를 설계했습니다.
       </p>
@@ -1678,21 +1710,21 @@
       <div class="highlight-card">
         <div class="h-icon">🎮</div>
         <div class="h-content">
-          <h4>게임 업계 페인포인트에서 출발</h4>
+          <h4 data-i18n="hcard1-title">게임 업계 페인포인트에서 출발</h4>
           <p>게임 기획자(PM), 사업개발, 마케터 모두가 겪는 경쟁 분석의 비효율을 직접 경험하고 AI로 해결하는 제품을 기획했습니다.</p>
         </div>
       </div>
       <div class="highlight-card">
         <div class="h-icon">🤖</div>
         <div class="h-content">
-          <h4>Claude AI 기반 프로토타입 직접 구현</h4>
+          <h4 data-i18n="hcard2-title">Claude AI 기반 프로토타입 직접 구현</h4>
           <p>바이브코딩을 통해 Anthropic API + Web Search Tool을 활용한 단일 HTML 파일 프로토타입을 직접 제작했습니다.</p>
         </div>
       </div>
       <div class="highlight-card">
         <div class="h-icon">📊</div>
         <div class="h-content">
-          <h4>명확한 검증 목표 설정</h4>
+          <h4 data-i18n="hcard3-title">명확한 검증 목표 설정</h4>
           <p>단순 기능 개발이 아닌 정보 정확도·구조화 품질·UI 접근성의 3가지 핵심 가설을 설정하고 검증하는 방식으로 프로덕트를 설계합니다.</p>
         </div>
       </div>
@@ -1740,5 +1772,143 @@
     });
   });
 </script>
+
+<script>
+(function() {
+  var TRANSLATIONS = {
+    ko: {
+    "page-title": `RivalScope — 박소현 AI 프로덕트 기획자`,
+    "hero-sub": `경쟁 게임명 하나만 입력하면 <strong>Claude AI가 실시간 웹 검색으로 유저 반응·강약점·시사점을 자동 수집·구조화</strong>합니다. 게임 기획자의 3시간 리서치를 30초로.`,
+    "btn-overview": `📋 프로젝트 개요`,
+    "btn-tech": `🔬 기술 스택 보기`,
+    "nav1": `문제정의`,
+    "nav2": `솔루션`,
+    "nav3": `기능`,
+    "nav4": `기술스택`,
+    "nav5": `프로토타입`,
+    "nav6": `검증`,
+    "sec01-label": `01 · Problem`,
+    "sec01-title": `왜 경쟁 게임<br>리서치가 힘든가?`,
+    "sec02-label": `02 · Solution`,
+    "sec02-title": `RivalScope가<br>해결하는 방식`,
+    "sec03-label": `03 · Features`,
+    "sec03-title": `핵심 기능`,
+    "sec04-label": `04 · Tech Stack`,
+    "sec04-title": `사용할 AI 도구`,
+    "sec05-label": `05 · Prototype`,
+    "sec05-title": `프로토타입`,
+    "sec06-label": `06 · Validation`,
+    "sec06-title": `프로토타입 목적`,
+    "sec07-label": `07 · About`,
+    "about-role": `AI PRODUCT PLANNER`,
+    "about-text": `게임 회사의 기획 워크플로우에 AI를 통합하는 데 관심을 갖고 RivalScope를 기획했습니다. 경쟁 게임 분석에 하루를 쏟는 기획자·마케터·사업개발 담당자들의 문제를 직접 해결하고자 Claude AI와 실시간 웹 검색을 결합한 리서치 자동화 도구를 설계했습니다.`,
+    "hcard1-title": `게임 업계 페인포인트에서 출발`,
+    "hcard1-desc": `게임 기획자(PM), 사업개발, 마케터 모두가 겪는 경쟁 분석의 비효율을 직접 경험하고 AI로 해결하는 제품을 기획했습니다.`,
+    "hcard2-title": `Claude AI 기반 프로토타입 직접 구현`,
+    "hcard2-desc": `바이브코딩을 통해 Anthropic API + Web Search Tool을 활용한 단일 HTML 파일 프로토타입을 직접 제작했습니다.`,
+    "hcard3-title": `명확한 검증 목표 설정`,
+    "hcard3-desc": `단순 기능 개발이 아닌 정보 정확도·구조화 품질·UI 접근성의 3가지 핵심 가설을 설정하고 검증하는 방식으로 프로덕트를 설계합니다.`,
+    "why-claude-title": `왜 Claude인가?`,
+    "footer-link1": `↑ 맨 위로`,
+    "footer-link2": `문제정의`,
+    "footer-link3": `솔루션`
+    },
+    en: {
+    "page-title": `RivalScope — Sohyun Park · AI Product Planner`,
+    "hero-sub": `Just enter one competitor game name — <strong>Claude AI automatically collects and structures user reactions, strengths, weaknesses, and key insights via real-time web search</strong>. A game planner's 3-hour research compressed into 30 seconds.`,
+    "btn-overview": `📋 Project Overview`,
+    "btn-tech": `🔬 View Tech Stack`,
+    "nav1": `Problem`,
+    "nav2": `Solution`,
+    "nav3": `Features`,
+    "nav4": `Tech Stack`,
+    "nav5": `Prototype`,
+    "nav6": `Validation`,
+    "sec01-label": `01 · Problem`,
+    "sec01-title": `Why Is Competitor<br>Research So Hard?`,
+    "sec02-label": `02 · Solution`,
+    "sec02-title": `How RivalScope<br>Solves It`,
+    "sec03-label": `03 · Features`,
+    "sec03-title": `Core Features`,
+    "sec04-label": `04 · Tech Stack`,
+    "sec04-title": `AI Tools Used`,
+    "sec05-label": `05 · Prototype`,
+    "sec05-title": `Prototype`,
+    "sec06-label": `06 · Validation`,
+    "sec06-title": `Prototype Goals`,
+    "sec07-label": `07 · About`,
+    "about-role": `AI PRODUCT PLANNER`,
+    "about-text": `Interested in integrating AI into game company planning workflows, I conceived RivalScope. I designed a research automation tool combining Claude AI with real-time web search to directly solve the inefficiencies faced by planners, marketers, and business developers who spend entire days on competitor game analysis.`,
+    "hcard1-title": `Starting from Game Industry Pain Points`,
+    "hcard1-desc": `Directly experienced the inefficiency of competitor analysis shared by game planners (PMs), business developers, and marketers, and conceived a product to solve it with AI.`,
+    "hcard2-title": `Directly Implementing a Claude AI-Based Prototype`,
+    "hcard2-desc": `Directly built a single HTML file prototype using Anthropic API + Web Search Tool through vibe coding.`,
+    "hcard3-title": `Setting Clear Validation Goals`,
+    "hcard3-desc": `Designed the product not just as feature development, but by setting and validating 3 core hypotheses: information accuracy, structuring quality, and UI accessibility.`,
+    "why-claude-title": `Why Claude?`,
+    "footer-link1": `↑ Back to Top`,
+    "footer-link2": `Problem`,
+    "footer-link3": `Solution`
+    }
+  };
+
+  var currentLang = 'ko';
+
+  function applyLang(lang) {
+    var t = TRANSLATIONS[lang];
+    document.documentElement.lang = lang;
+    if (t['page-title']) document.title = t['page-title'];
+
+    // hero-sub
+    var heroSub = document.querySelector('.hero-sub');
+    if (heroSub && t['hero-sub']) heroSub.innerHTML = t['hero-sub'];
+
+    // hero-title (medipair specific)
+    if (t['hero-title-html']) {
+      var ht = document.querySelector('.hero-title');
+      if (ht) ht.innerHTML = t['hero-title-html'];
+    }
+
+    // CTA buttons
+    var ctaBtns = document.querySelectorAll('.hero-cta a');
+    if (ctaBtns[0] && t['btn-overview']) ctaBtns[0].innerHTML = t['btn-overview'];
+    if (ctaBtns[1] && t['btn-tech']) ctaBtns[1].innerHTML = t['btn-tech'];
+
+    // data-i18n elements
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+
+    // toggle button visual
+    var ltKo = document.getElementById('lt-ko');
+    var ltEn = document.getElementById('lt-en');
+    if (ltKo && ltEn) {
+      ltKo.classList.toggle('active', lang === 'ko');
+      ltEn.classList.toggle('active', lang === 'en');
+      ltKo.style.background = lang === 'ko' ? 'var(--accent)' : 'transparent';
+      ltKo.style.color = lang === 'ko' ? '#0a0a0f' : '';
+      ltEn.style.background = lang === 'en' ? 'var(--accent)' : 'transparent';
+      ltEn.style.color = lang === 'en' ? '#0a0a0f' : '';
+    }
+  }
+
+  function toggleLang() {
+    currentLang = currentLang === 'ko' ? 'en' : 'ko';
+    applyLang(currentLang);
+  }
+
+  // attach after DOM ready
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('langBtn');
+    if (btn) btn.addEventListener('click', toggleLang);
+    // init active style
+    applyLang('ko');
+  });
+
+  window.toggleLang = toggleLang;
+})();
+</script>
+
 </body>
 </html>
