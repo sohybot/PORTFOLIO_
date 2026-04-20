@@ -439,6 +439,32 @@
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 3px; }
+
+  /* ── LANG TOGGLE ── */
+  .lang-toggle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    overflow: hidden;
+    margin-left: 0.8rem;
+    position: relative;
+    z-index: 200;
+  }
+  .lang-toggle .lt-opt {
+    padding: 0.28rem 0.65rem;
+    color: var(--muted);
+    transition: background 0.18s, color 0.18s;
+    user-select: none;
+    cursor: pointer;
+    line-height: 1.4;
+  }
+  .lang-toggle .lt-opt.active {
+    font-weight: 700;
+  }
 </style>
 </head>
 <body>
@@ -453,7 +479,13 @@
     <li><a href="#impact">성과</a></li>
     <li><a href="#about">기획자</a></li>
   </ul>
-  <div class="nav-tag">HealthTech AI</div>
+  <div style="display:flex;align-items:center;gap:0.6rem;position:relative;z-index:200;">
+    <div class="nav-tag">HealthTech AI</div>
+    <button class="lang-toggle" id="langBtn" aria-label="언어 전환">
+      <span class="lt-opt active" id="lt-ko">한</span>
+      <span class="lt-opt" id="lt-en">ENG</span>
+    </button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -551,8 +583,8 @@
 
 <!-- BACKGROUND -->
 <section id="background">
-  <div class="section-label">01 · Background</div>
-  <h2 class="section-title">기획 배경 &<br>서비스 핵심 가치</h2>
+  <div class="section-label" data-i18n="sec01-label">01 · Background</div>
+  <h2 class="section-title" data-i18n="sec01-title">기획 배경 &<br>서비스 핵심 가치</h2>
 
   <div class="bg-grid">
     <div>
@@ -562,29 +594,29 @@
         <div class="prob-item">
           <div class="prob-icon">🔍</div>
           <div class="prob-content">
-            <h4>약물-음식 상호작용 정보 분산</h4>
-            <p>정보가 전문 의약 서적·처방전에 흩어져 있어 일반인이 즉시 확인하기 어려움</p>
+            <h4 data-i18n="prob1-title">약물-음식 상호작용 정보 분산</h4>
+            <p data-i18n="prob1-desc">정보가 전문 의약 서적·처방전에 흩어져 있어 일반인이 즉시 확인하기 어려움</p>
           </div>
         </div>
         <div class="prob-item">
           <div class="prob-icon">👴</div>
           <div class="prob-content">
-            <h4>고령자·다약제 복용자 오남용 위험</h4>
-            <p>여러 약을 동시에 복용하는 환자군에서 상호작용 부작용 위험 급증</p>
+            <h4 data-i18n="prob2-title">고령자·다약제 복용자 오남용 위험</h4>
+            <p data-i18n="prob2-desc">여러 약을 동시에 복용하는 환자군에서 상호작용 부작용 위험 급증</p>
           </div>
         </div>
         <div class="prob-item">
           <div class="prob-icon">📚</div>
           <div class="prob-content">
-            <h4>전문성 중심 정보의 낮은 접근성</h4>
-            <p>의학 용어 중심 안내로 일반 사용자가 이해하기 어려운 구조</p>
+            <h4 data-i18n="prob3-title">전문성 중심 정보의 낮은 접근성</h4>
+            <p data-i18n="prob3-desc">의학 용어 중심 안내로 일반 사용자가 이해하기 어려운 구조</p>
           </div>
         </div>
         <div class="prob-item">
           <div class="prob-icon">💡</div>
           <div class="prob-content">
-            <h4>직관적 AI 안전 가이드 부재</h4>
-            <p>사진 한 장으로 즉시 위험도를 판단할 수 있는 서비스가 없음</p>
+            <h4 data-i18n="prob4-title">직관적 AI 안전 가이드 부재</h4>
+            <p data-i18n="prob4-desc">사진 한 장으로 즉시 위험도를 판단할 수 있는 서비스가 없음</p>
           </div>
         </div>
       </div>
@@ -592,16 +624,16 @@
 
     <div class="value-cards reveal">
       <div class="value-card">
-        <h4>📸 이미지 기반 즉시 안전 확인</h4>
-        <p>알약·음식 사진만으로 상호작용 위험을 즉시 안내합니다. 텍스트 입력 없이 카메라만으로 분석 가능합니다.</p>
+        <h4 data-i18n="val1-title">📸 이미지 기반 즉시 안전 확인</h4>
+        <p data-i18n="val1-desc">알약·음식 사진만으로 상호작용 위험을 즉시 안내합니다. 텍스트 입력 없이 카메라만으로 분석 가능합니다.</p>
       </div>
       <div class="value-card">
-        <h4>✅ 누구나 이해하는 직관적 안전 가이드</h4>
-        <p>Safe / Caution 2단계 위험도 분류로 의학 지식 없이도 즉시 이해할 수 있는 인터페이스를 설계했습니다.</p>
+        <h4 data-i18n="val2-title">✅ 누구나 이해하는 직관적 안전 가이드</h4>
+        <p data-i18n="val2-desc">Safe / Caution 2단계 위험도 분류로 의학 지식 없이도 즉시 이해할 수 있는 인터페이스를 설계했습니다.</p>
       </div>
       <div class="value-card">
-        <h4>🏥 정보 소외 계층 접근성 강화</h4>
-        <p>고령자·디지털 취약 계층도 쉽게 사용할 수 있도록 복잡한 입력 없이 이미지만으로 작동하는 UX를 구현했습니다.</p>
+        <h4 data-i18n="val3-title">🏥 정보 소외 계층 접근성 강화</h4>
+        <p data-i18n="val3-desc">고령자·디지털 취약 계층도 쉽게 사용할 수 있도록 복잡한 입력 없이 이미지만으로 작동하는 UX를 구현했습니다.</p>
       </div>
     </div>
   </div>
@@ -611,8 +643,8 @@
 <section id="features">
   <div class="features-header">
     <div>
-      <div class="section-label">02 · Core Features</div>
-      <h2 class="section-title">4가지<br>핵심 기능</h2>
+      <div class="section-label" data-i18n="sec02-label">02 · Core Features</div>
+      <h2 class="section-title" data-i18n="sec02-title">4가지<br>핵심 기능</h2>
     </div>
     <p class="section-desc">알약 인식·음식 탐지·상호작용 DB 구축·결과 시각화. 4가지 기능이 파이프라인으로 연결되어 사진 한 장으로 안전 여부를 즉시 제공합니다.</p>
   </div>
@@ -621,8 +653,8 @@
     <div class="feat-block">
       <div class="feat-num">1</div>
       <div class="feat-icon-wrap">💊</div>
-      <h3>알약 인식 (Pill Recognition)</h3>
-      <p>Azure Custom Vision Cognitive Services로 다양한 모양·색상의 알약을 정확히 식별합니다. 제형 특징 학습으로 분류 모델을 최적화했습니다.</p>
+      <h3 data-i18n="feat1-title">알약 인식 (Pill Recognition)</h3>
+      <p data-i18n="feat1-desc">Azure Custom Vision Cognitive Services로 다양한 모양·색상의 알약을 정확히 식별합니다. 제형 특징 학습으로 분류 모델을 최적화했습니다.</p>
       <div class="feat-tags">
         <span class="feat-tag">Azure Custom Vision</span>
         <span class="feat-tag indigo">이미지 분류</span>
@@ -633,7 +665,7 @@
     <div class="feat-block">
       <div class="feat-num">2</div>
       <div class="feat-icon-wrap">🍽</div>
-      <h3>음식 인식 (Food Detection)</h3>
+      <h3 data-i18n="feat2-title">음식 인식 (Food Detection)</h3>
       <p>OpenCV + YOLOv11 기반 실시간 한국 음식 객체 탐지. 한국 음식 데이터 기반으로 다중 객체 인식이 가능하며 사용자가 섭취하려는 음식을 자동 탐지·분류합니다.</p>
       <div class="feat-tags">
         <span class="feat-tag green">YOLOv11</span>
@@ -645,7 +677,7 @@
     <div class="feat-block">
       <div class="feat-num">3</div>
       <div class="feat-icon-wrap">🗄</div>
-      <h3>상호작용 DB 구축</h3>
+      <h3 data-i18n="feat3-title">상호작용 DB 구축</h3>
       <p>공공 데이터를 활용해 약물·음식 위험도를 Safe / Caution 2단계로 체계적으로 분류했습니다. Azure SQL과 Open Data를 결합한 전문 의약 정보 시각화를 구현했습니다.</p>
       <div class="feat-tags">
         <span class="feat-tag amber">Safe / Caution 분류</span>
@@ -657,7 +689,7 @@
     <div class="feat-block">
       <div class="feat-num">4</div>
       <div class="feat-icon-wrap">📊</div>
-      <h3>결과 시각화 & 안내</h3>
+      <h3 data-i18n="feat4-title">결과 시각화 & 안내</h3>
       <p>약물-음식 상호작용 분석 결과를 직관적 UI로 즉시 표시합니다. 주의 성분 명시, 복약 안내 메시지, 다른 조합 확인 기능으로 사용 편의성을 극대화했습니다.</p>
       <div class="feat-tags">
         <span class="feat-tag">직관적 UI/UX</span>
@@ -670,15 +702,15 @@
 
 <!-- TECH -->
 <section id="tech">
-  <div class="section-label">03 · Performance & Architecture</div>
-  <h2 class="section-title">기술 성과 &<br>아키텍처 Deep Dive</h2>
+  <div class="section-label" data-i18n="sec03-label">03 · Performance & Architecture</div>
+  <h2 class="section-title" data-i18n="sec03-title">기술 성과 &<br>아키텍처 Deep Dive</h2>
   <p class="section-desc">이미지 전처리 파이프라인 강화와 데이터 불균형 해결로 93% 인식 정확도를 달성했습니다. 9,000+ 학습 데이터셋을 직접 구축했습니다.</p>
 
   <div class="tech-grid reveal">
     <div class="challenge-list">
       <div class="ch-card">
-        <div class="ch-num">ACHIEVEMENT 01</div>
-        <h4>알약 인식 정확도 93% 달성</h4>
+        <div class="ch-num" data-i18n="ach1-num">ACHIEVEMENT 01</div>
+        <h4 data-i18n="ach1-title">알약 인식 정확도 93% 달성</h4>
         <p class="ch-problem">다양한 모양·색상의 알약을 카메라로 정확히 분류하는 것이 핵심 기술 과제였습니다. 조명 환경, 촬영 각도, 유사한 제형 간 구분이 특히 어려웠습니다.</p>
         <div class="ch-sol-label">해결 전략</div>
         <p class="ch-solution">이미지 전처리 파이프라인 강화(노이즈 제거·대비 조정·리사이징)와 Azure Custom Vision 모델 최적화로 제형 특징을 정밀 학습했습니다.</p>
@@ -686,8 +718,8 @@
       </div>
 
       <div class="ch-card">
-        <div class="ch-num">ACHIEVEMENT 02</div>
-        <h4>9,000+ 대규모 데이터셋 구축</h4>
+        <div class="ch-num" data-i18n="ach2-num">ACHIEVEMENT 02</div>
+        <h4 data-i18n="ach2-title">9,000+ 대규모 데이터셋 구축</h4>
         <p class="ch-problem">한국 음식 및 주요 처방 약물 이미지 데이터가 부족해 모델 학습에 필요한 양질의 데이터셋을 직접 구축해야 했습니다.</p>
         <div class="ch-sol-label">해결 전략</div>
         <p class="ch-solution">Food 6,000+ / Drug 3,000+ 이미지 데이터를 직접 수집·라벨링했습니다. 특정 클래스 데이터 부족 문제는 오버샘플링(Oversampling) 기법으로 해결했습니다.</p>
@@ -695,8 +727,8 @@
       </div>
 
       <div class="ch-card">
-        <div class="ch-num">ACHIEVEMENT 03</div>
-        <h4>데이터 불균형 문제 해결</h4>
+        <div class="ch-num" data-i18n="ach3-num">ACHIEVEMENT 03</div>
+        <h4 data-i18n="ach3-title">데이터 불균형 문제 해결</h4>
         <p class="ch-problem">특정 클래스(희귀 약물, 특정 음식)의 데이터가 다른 클래스에 비해 현저히 부족해 모델이 편향 학습되는 문제가 발생했습니다.</p>
         <div class="ch-sol-label">해결 전략</div>
         <p class="ch-solution">오버샘플링 기법을 적용해 클래스 간 데이터 균형을 맞추고, 데이터 증강(Augmentation)으로 다양한 환경에서의 인식률을 향상했습니다.</p>
@@ -706,12 +738,12 @@
 
     <div>
       <div class="perf-box">
-        <h3>성과 & 스택</h3>
+        <h3 data-i18n="perf-title">성과 & 스택</h3>
 
         <!-- accuracy meter -->
         <div class="accuracy-block">
           <div class="accuracy-header">
-            <span class="accuracy-label">알약 인식 정확도</span>
+            <span class="accuracy-label" data-i18n="acc-label">알약 인식 정확도</span>
             <span class="accuracy-num">93<span style="font-size:1.2rem;">%</span></span>
           </div>
           <div class="accuracy-bar">
@@ -736,12 +768,12 @@
           <div class="risk-level rl-safe">
             <span class="rl-icon">✅</span>
             <div class="rl-name">SAFE</div>
-            <div class="rl-desc">상호작용 없음</div>
+            <div class="rl-desc" data-i18n="rl-safe-desc">상호작용 없음</div>
           </div>
           <div class="risk-level rl-caution">
             <span class="rl-icon">⚠️</span>
             <div class="rl-name">CAUTION</div>
-            <div class="rl-desc">주의 필요</div>
+            <div class="rl-desc" data-i18n="rl-caution-desc">주의 필요</div>
           </div>
         </div>
 
@@ -775,8 +807,8 @@
 
 <!-- IMPACT -->
 <section id="impact">
-  <div class="section-label">04 · Impact & Role</div>
-  <h2 class="section-title">프로젝트 성과 &<br>기획 역할</h2>
+  <div class="section-label" data-i18n="sec04-label">04 · Impact & Role</div>
+  <h2 class="section-title" data-i18n="sec04-title">프로젝트 성과 &<br>기획 역할</h2>
 
   <div class="stats-row reveal">
     <div class="stat-cell">
@@ -799,7 +831,7 @@
 
   <div class="role-grid reveal">
     <div class="role-card">
-      <h3>👩‍💼 기획 역할 (PM)</h3>
+      <h3 data-i18n="role-title">👩‍💼 기획 역할 (PM)</h3>
       <div class="role-item"><div class="role-dot"></div>데이터 수집 및 DB 구축 기획</div>
       <div class="role-item"><div class="role-dot"></div>모델 설계 방향 정의 및 팀 지원</div>
       <div class="role-item"><div class="role-dot"></div>Safe/Caution 2단계 위험도 분류 체계 설계</div>
@@ -808,7 +840,7 @@
     </div>
 
     <div class="role-card">
-      <h3>🏆 핵심 성과 요약</h3>
+      <h3 data-i18n="achieve-title">🏆 핵심 성과 요약</h3>
       <div class="role-item"><div class="role-dot"></div>알약 인식 정확도 93% 달성 (이미지 전처리 파이프라인 강화)</div>
       <div class="role-item"><div class="role-dot"></div>총 9,000+ 학습 데이터셋 직접 구축 및 데이터 불균형 해결</div>
       <div class="role-item"><div class="role-dot"></div>약물-음식 위험도 Safe/Caution 2단계 분류 체계 완성</div>
@@ -819,11 +851,11 @@
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="section-label">05 · About</div>
+  <div class="section-label" data-i18n="sec05-label">05 · About</div>
   <div class="about-grid">
     <div>
       <div class="about-name">박소현</div>
-      <div class="about-role">AI PRODUCT PLANNER · PM</div>
+      <div class="about-role" data-i18n="about-role">AI PRODUCT PLANNER · PM</div>
       <p class="about-text">
         고령자와 다약제 복용자가 약물-음식 상호작용 정보에 쉽게 접근하지 못하는 문제를 AI로 해결하고자 MediPair를 기획했습니다. 전문성 높은 의학 정보를 직관적인 이미지 기반 인터페이스로 재설계하고, Safe/Caution 2단계 분류 체계로 누구나 이해할 수 있는 안전 가이드를 만들었습니다.
       </p>
@@ -843,21 +875,21 @@
       <div class="h-card">
         <div class="h-icon">🏥</div>
         <div class="h-content">
-          <h4>의료 정보 접근성을 UX로 해결</h4>
+          <h4 data-i18n="hcard1-title">의료 정보 접근성을 UX로 해결</h4>
           <p>전문가만 이해할 수 있던 약물-음식 상호작용 정보를 사진 한 장과 Safe/Caution 2단계 분류로 누구나 즉시 이해할 수 있도록 재설계했습니다.</p>
         </div>
       </div>
       <div class="h-card">
         <div class="h-icon">📊</div>
         <div class="h-content">
-          <h4>9,000+ 데이터셋 직접 구축한 PM</h4>
+          <h4 data-i18n="hcard2-title">9,000+ 데이터셋 직접 구축한 PM</h4>
           <p>단순 기획을 넘어 Food 6,000+ / Drug 3,000+ 이미지 데이터를 직접 수집·라벨링하고 데이터 불균형 문제를 오버샘플링으로 해결했습니다.</p>
         </div>
       </div>
       <div class="h-card">
         <div class="h-icon">🚀</div>
         <div class="h-content">
-          <h4>PoC에서 상용화 가능 구조로</h4>
+          <h4 data-i18n="hcard3-title">PoC에서 상용화 가능 구조로</h4>
           <p>Vision 모델 최적화 기반 상용화 설계를 기획하여 프로토타입을 실제 서비스화할 수 있는 아키텍처와 UX 플로우를 설계했습니다.</p>
         </div>
       </div>
@@ -895,5 +927,229 @@
     navLinks.forEach(a => { a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--accent)' : ''; });
   });
 </script>
+
+<script>
+(function() {
+  var TRANSLATIONS = {
+    ko: {
+    "page-title": `MediPair — 박소현 AI 프로덕트 기획자`,
+    "hero-title-html": `알약과 음식,<br>함께 먹어도<br><span class="outline">안전한가?</span>`,
+    "hero-sub": `알약 사진과 음식 사진 하나로 <strong>약물-음식 상호작용 위험</strong>을 즉시 분석합니다. Azure Custom Vision과 YOLOv11 기반 AI가 93% 정확도로 식별하고, 누구나 이해할 수 있는 직관적 안전 가이드를 제공합니다.`,
+    "btn-overview": `📋 프로젝트 개요`,
+    "btn-tech": `🔬 기술 성과 보기`,
+    "nav1": `기획배경`,
+    "nav2": `핵심기능`,
+    "nav3": `기술성과`,
+    "nav4": `성과`,
+    "sec01-label": `01 · Background`,
+    "sec01-title": `기획 배경 &<br>서비스 핵심 가치`,
+    "prob1-title": `약물-음식 상호작용 정보 분산`,
+    "prob1-desc": `정보가 전문 의약 서적·처방전에 흩어져 있어 일반인이 즉시 확인하기 어려움`,
+    "prob2-title": `고령자·다약제 복용자 오남용 위험`,
+    "prob2-desc": `여러 약을 동시에 복용하는 환자군에서 상호작용 부작용 위험 급증`,
+    "prob3-title": `전문성 중심 정보의 낮은 접근성`,
+    "prob3-desc": `의학 용어 중심 안내로 일반 사용자가 이해하기 어려운 구조`,
+    "prob4-title": `직관적 AI 안전 가이드 부재`,
+    "prob4-desc": `사진 한 장으로 즉시 위험도를 판단할 수 있는 서비스가 없음`,
+    "val1-title": `📸 이미지 기반 즉시 안전 확인`,
+    "val1-desc": `알약·음식 사진만으로 상호작용 위험을 즉시 안내합니다. 텍스트 입력 없이 카메라만으로 분석 가능합니다.`,
+    "val2-title": `✅ 누구나 이해하는 직관적 안전 가이드`,
+    "val2-desc": `Safe / Caution 2단계 위험도 분류로 의학 지식 없이도 즉시 이해할 수 있는 인터페이스를 설계했습니다.`,
+    "val3-title": `🏥 정보 소외 계층 접근성 강화`,
+    "val3-desc": `고령자·디지털 취약 계층도 쉽게 사용할 수 있도록 복잡한 입력 없이 이미지만으로 작동하는 UX를 구현했습니다.`,
+    "sec02-label": `02 · Core Features`,
+    "sec02-title": `4가지<br>핵심 기능`,
+    "sec02-desc": `알약 인식·음식 탐지·상호작용 DB 구축·결과 시각화. 4가지 기능이 파이프라인으로 연결되어 사진 한 장으로 안전 여부를 즉시 제공합니다.`,
+    "feat1-title": `알약 인식 (Pill Recognition)`,
+    "feat1-desc": `Azure Custom Vision Cognitive Services로 다양한 모양·색상의 알약을 정확히 식별합니다. 제형 특징 학습으로 분류 모델을 최적화했습니다.`,
+    "feat2-title": `음식 인식 (Food Detection)`,
+    "feat2-desc": `OpenCV + YOLOv11 기반 실시간 한국 음식 객체 탐지. 한국 음식 데이터 기반으로 다중 객체 인식이 가능하며 사용자가 섭취하려는 음식을 자동 탐지·분류합니다.`,
+    "feat3-title": `상호작용 DB 구축`,
+    "feat3-desc": `공공 데이터를 활용해 약물·음식 위험도를 Safe / Caution 2단계로 체계적으로 분류했습니다. Azure SQL과 Open Data를 결합한 전문 의약 정보 시각화를 구현했습니다.`,
+    "feat4-title": `결과 시각화 & 안내`,
+    "feat4-desc": `약물-음식 상호작용 분석 결과를 직관적 UI로 즉시 표시합니다. 주의 성분 명시, 복약 안내 메시지, 다른 조합 확인 기능으로 사용 편의성을 극대화했습니다.`,
+    "sec03-label": `03 · Performance & Architecture`,
+    "sec03-title": `기술 성과 &<br>아키텍처 Deep Dive`,
+    "sec03-desc": `이미지 전처리 파이프라인 강화와 데이터 불균형 해결로 93% 인식 정확도를 달성했습니다. 9,000+ 학습 데이터셋을 직접 구축했습니다.`,
+    "ach1-num": `ACHIEVEMENT 01`,
+    "ach1-title": `알약 인식 정확도 93% 달성`,
+    "ach1-prob": `다양한 모양·색상의 알약을 카메라로 정확히 분류하는 것이 핵심 기술 과제였습니다. 조명 환경, 촬영 각도, 유사한 제형 간 구분이 특히 어려웠습니다.`,
+    "ach1-sol": `이미지 전처리 파이프라인 강화(노이즈 제거·대비 조정·리사이징)와 Azure Custom Vision 모델 최적화로 제형 특징을 정밀 학습했습니다.`,
+    "ach1-result": `알약 인식 정확도 93% 달성`,
+    "ach2-num": `ACHIEVEMENT 02`,
+    "ach2-title": `9,000+ 대규모 데이터셋 구축`,
+    "ach2-prob": `한국 음식 및 주요 처방 약물 이미지 데이터가 부족해 모델 학습에 필요한 양질의 데이터셋을 직접 구축해야 했습니다.`,
+    "ach2-sol": `Food 6,000+ / Drug 3,000+ 이미지 데이터를 직접 수집·라벨링했습니다. 특정 클래스 데이터 부족 문제는 오버샘플링(Oversampling) 기법으로 해결했습니다.`,
+    "ach2-result": `총 9,000+ 학습 데이터 · 인식률 편차 최소화`,
+    "ach3-num": `ACHIEVEMENT 03`,
+    "ach3-title": `데이터 불균형 문제 해결`,
+    "ach3-prob": `특정 클래스(희귀 약물, 특정 음식)의 데이터가 다른 클래스에 비해 현저히 부족해 모델이 편향 학습되는 문제가 발생했습니다.`,
+    "ach3-sol": `오버샘플링 기법을 적용해 클래스 간 데이터 균형을 맞추고, 데이터 증강(Augmentation)으로 다양한 환경에서의 인식률을 향상했습니다.`,
+    "ach3-result": `인식률 편차 최소화 · 전체 클래스 균등 성능`,
+    "perf-title": `성과 & 스택`,
+    "acc-label": `알약 인식 정확도`,
+    "rl-safe-desc": `상호작용 없음`,
+    "rl-caution-desc": `주의 필요`,
+    "sec04-label": `04 · Impact & Role`,
+    "sec04-title": `프로젝트 성과 &<br>기획 역할`,
+    "stat1-label": `알약 인식 정확도<br>Azure Custom Vision`,
+    "stat2-label": `학습 데이터셋<br>Food 6K + Drug 3K`,
+    "stat3-label": `위험도 분류 레벨<br>Safe / Caution`,
+    "stat4-label": `실시간 객체 탐지<br>YOLOv11 기반`,
+    "role-title": `👩‍💼 기획 역할 (PM)`,
+    "achieve-title": `🏆 핵심 성과 요약`,
+    "sec05-label": `05 · About`,
+    "about-role": `AI PRODUCT PLANNER · PM`,
+    "about-text": `고령자와 다약제 복용자가 약물-음식 상호작용 정보에 쉽게 접근하지 못하는 문제를 AI로 해결하고자 MediPair를 기획했습니다. 전문성 높은 의학 정보를 직관적인 이미지 기반 인터페이스로 재설계하고, Safe/Caution 2단계 분류 체계로 누구나 이해할 수 있는 안전 가이드를 만들었습니다.`,
+    "hcard1-title": `의료 정보 접근성을 UX로 해결`,
+    "hcard1-desc": `전문가만 이해할 수 있던 약물-음식 상호작용 정보를 사진 한 장과 Safe/Caution 2단계 분류로 누구나 즉시 이해할 수 있도록 재설계했습니다.`,
+    "hcard2-title": `9,000+ 데이터셋 직접 구축한 PM`,
+    "hcard2-desc": `단순 기획을 넘어 Food 6,000+ / Drug 3,000+ 이미지 데이터를 직접 수집·라벨링하고 데이터 불균형 문제를 오버샘플링으로 해결했습니다.`,
+    "hcard3-title": `PoC에서 상용화 가능 구조로`,
+    "hcard3-desc": `Vision 모델 최적화 기반 상용화 설계를 기획하여 프로토타입을 실제 서비스화할 수 있는 아키텍처와 UX 플로우를 설계했습니다.`,
+    "footer-link1": `↑ 맨 위로`,
+    "footer-link2": `기획배경`,
+    "footer-link3": `기술성과`
+    },
+    en: {
+    "page-title": `MediPair — Sohyun Park · AI Product Planner`,
+    "hero-title-html": `Pills & Food —<br>Is It Safe To<br><span class="outline">Take Together?</span>`,
+    "hero-sub": `With a single photo of pills and food, <strong>drug-food interaction risks</strong> are instantly analyzed. Azure Custom Vision and YOLOv11-based AI identifies with 93% accuracy and provides an intuitive safety guide anyone can understand.`,
+    "btn-overview": `📋 Project Overview`,
+    "btn-tech": `🔬 View Tech Results`,
+    "nav1": `Background`,
+    "nav2": `Features`,
+    "nav3": `Tech`,
+    "nav4": `Impact`,
+    "sec01-label": `01 · Background`,
+    "sec01-title": `Planning Background &<br>Core Value`,
+    "prob1-title": `Fragmented Drug-Food Interaction Data`,
+    "prob1-desc": `Information scattered across medical textbooks and prescriptions — hard for the public to check instantly`,
+    "prob2-title": `High Misuse Risk for Elderly & Multi-Drug Users`,
+    "prob2-desc": `Rapidly increasing side-effect risk from drug interactions in patients taking multiple medications`,
+    "prob3-title": `Low Accessibility of Expert-Only Information`,
+    "prob3-desc": `Medical-terminology-heavy guidance that is difficult for general users to understand`,
+    "prob4-title": `No Intuitive AI Safety Guide`,
+    "prob4-desc": `No service that can instantly assess risk from a single photo`,
+    "val1-title": `📸 Instant Safety Check via Image`,
+    "val1-desc": `Immediately identifies interaction risks from a photo of pills or food — no text input needed, just a camera.`,
+    "val2-title": `✅ Intuitive Safety Guide for Everyone`,
+    "val2-desc": `A Safe / Caution 2-tier risk classification designed so anyone can understand without medical knowledge.`,
+    "val3-title": `🏥 Enhanced Accessibility for Underserved Groups`,
+    "val3-desc": `Image-only UX with no complex inputs, designed so the elderly and digitally vulnerable can use it easily.`,
+    "sec02-label": `02 · Core Features`,
+    "sec02-title": `4 Core<br>Features`,
+    "sec02-desc": `Pill recognition · food detection · interaction DB · result visualization — 4 features connected in a pipeline to deliver instant safety results from a single photo.`,
+    "feat1-title": `Pill Recognition`,
+    "feat1-desc": `Accurately identifies pills of various shapes and colors using Azure Custom Vision Cognitive Services. Classification model optimized through dosage-form feature learning.`,
+    "feat2-title": `Food Detection`,
+    "feat2-desc": `Real-time Korean food object detection using OpenCV + YOLOv11. Supports multi-object recognition based on Korean food data and auto-detects food the user intends to eat.`,
+    "feat3-title": `Interaction DB Construction`,
+    "feat3-desc": `Systematically classifies drug and food risk levels into Safe / Caution 2 tiers using public data. Professional pharmaceutical info visualization combining Azure SQL and Open Data.`,
+    "feat4-title": `Result Visualization & Guidance`,
+    "feat4-desc": `Instantly displays drug-food interaction analysis through an intuitive UI. Maximizes usability with ingredient warnings, medication guidance messages, and combination checking.`,
+    "sec03-label": `03 · Performance & Architecture`,
+    "sec03-title": `Technical Results &<br>Architecture Deep Dive`,
+    "sec03-desc": `Achieved 93% recognition accuracy through enhanced image preprocessing pipeline and resolving data imbalance. Built 9,000+ training datasets from scratch.`,
+    "ach1-num": `ACHIEVEMENT 01`,
+    "ach1-title": `93% Pill Recognition Accuracy Achieved`,
+    "ach1-prob": `Accurately classifying pills of various shapes and colors via camera was the core challenge — especially distinguishing similar dosage forms under varying lighting and angles.`,
+    "ach1-sol": `Enhanced image preprocessing pipeline (noise removal, contrast adjustment, resizing) and Azure Custom Vision model optimization for precise dosage-form feature learning.`,
+    "ach1-result": `93% Pill Recognition Accuracy Achieved`,
+    "ach2-num": `ACHIEVEMENT 02`,
+    "ach2-title": `9,000+ Large-Scale Dataset Built`,
+    "ach2-prob": `Insufficient image data for Korean food and major prescription drugs required building a high-quality dataset from scratch for model training.`,
+    "ach2-sol": `Directly collected and labeled Food 6,000+ / Drug 3,000+ image data. Addressed class shortage through oversampling techniques.`,
+    "ach2-result": `9,000+ Training Data Total · Minimized Recognition Variance`,
+    "ach3-num": `ACHIEVEMENT 03`,
+    "ach3-title": `Data Imbalance Problem Resolved`,
+    "ach3-prob": `Certain classes (rare drugs, specific foods) had significantly fewer data points than others, causing biased model training.`,
+    "ach3-sol": `Applied oversampling to balance classes and used data augmentation to improve recognition rates across diverse environments.`,
+    "ach3-result": `Minimized Recognition Variance · Uniform Performance Across All Classes`,
+    "perf-title": `Results & Stack`,
+    "acc-label": `Pill Recognition Accuracy`,
+    "rl-safe-desc": `No Interaction`,
+    "rl-caution-desc": `Use with Caution`,
+    "sec04-label": `04 · Impact & Role`,
+    "sec04-title": `Project Results &<br>Planning Role`,
+    "stat1-label": `Pill Recognition Accuracy<br>Azure Custom Vision`,
+    "stat2-label": `Training Dataset<br>Food 6K + Drug 3K`,
+    "stat3-label": `Risk Classification Levels<br>Safe / Caution`,
+    "stat4-label": `Real-time Object Detection<br>YOLOv11-based`,
+    "role-title": `👩‍💼 Planning Role (PM)`,
+    "achieve-title": `🏆 Key Results Summary`,
+    "sec05-label": `05 · About`,
+    "about-role": `AI PRODUCT PLANNER · PM`,
+    "about-text": `I conceived MediPair to solve the problem of elderly and polypharmacy patients struggling to access drug-food interaction information. I redesigned expert-level medical information into an intuitive image-based interface and created an instantly understandable safety guide through a Safe/Caution 2-tier classification system.`,
+    "hcard1-title": `Solving Medical Info Accessibility Through UX`,
+    "hcard1-desc": `Redesigned drug-food interaction info — once only understandable by experts — so anyone can grasp it instantly through a photo and Safe/Caution 2-tier classification.`,
+    "hcard2-title": `A PM Who Built 9,000+ Datasets Directly`,
+    "hcard2-desc": `Beyond mere planning, directly collected and labeled Food 6,000+ / Drug 3,000+ image data and resolved data imbalance through oversampling.`,
+    "hcard3-title": `From PoC to Commercially Viable Structure`,
+    "hcard3-desc": `Planned commercialization design based on Vision model optimization, designing architecture and UX flow to turn the prototype into a real service.`,
+    "footer-link1": `↑ Back to Top`,
+    "footer-link2": `Background`,
+    "footer-link3": `Tech Results`
+    }
+  };
+
+  var currentLang = 'ko';
+
+  function applyLang(lang) {
+    var t = TRANSLATIONS[lang];
+    document.documentElement.lang = lang;
+    if (t['page-title']) document.title = t['page-title'];
+
+    // hero-sub
+    var heroSub = document.querySelector('.hero-sub');
+    if (heroSub && t['hero-sub']) heroSub.innerHTML = t['hero-sub'];
+
+    // hero-title (medipair specific)
+    if (t['hero-title-html']) {
+      var ht = document.querySelector('.hero-title');
+      if (ht) ht.innerHTML = t['hero-title-html'];
+    }
+
+    // CTA buttons
+    var ctaBtns = document.querySelectorAll('.hero-cta a');
+    if (ctaBtns[0] && t['btn-overview']) ctaBtns[0].innerHTML = t['btn-overview'];
+    if (ctaBtns[1] && t['btn-tech']) ctaBtns[1].innerHTML = t['btn-tech'];
+
+    // data-i18n elements
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+
+    // toggle button visual
+    var ltKo = document.getElementById('lt-ko');
+    var ltEn = document.getElementById('lt-en');
+    if (ltKo && ltEn) {
+      ltKo.classList.toggle('active', lang === 'ko');
+      ltEn.classList.toggle('active', lang === 'en');
+      ltKo.style.background = lang === 'ko' ? 'var(--accent)' : 'transparent';
+      ltKo.style.color = lang === 'ko' ? '#080d0f' : '';
+      ltEn.style.background = lang === 'en' ? 'var(--accent)' : 'transparent';
+      ltEn.style.color = lang === 'en' ? '#080d0f' : '';
+    }
+  }
+
+  function toggleLang() {
+    currentLang = currentLang === 'ko' ? 'en' : 'ko';
+    applyLang(currentLang);
+  }
+
+  // attach after DOM ready
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('langBtn');
+    if (btn) btn.addEventListener('click', toggleLang);
+    // init active style
+    applyLang('ko');
+  });
+
+  window.toggleLang = toggleLang;
+})();
+</script>
+
 </body>
 </html>
