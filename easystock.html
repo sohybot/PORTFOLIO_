@@ -535,6 +535,32 @@
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 3px; }
+
+  /* ── LANG TOGGLE ── */
+  .lang-toggle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    overflow: hidden;
+    margin-left: 0.8rem;
+    position: relative;
+    z-index: 200;
+  }
+  .lang-toggle .lt-opt {
+    padding: 0.28rem 0.65rem;
+    color: var(--muted);
+    transition: background 0.18s, color 0.18s;
+    user-select: none;
+    cursor: pointer;
+    line-height: 1.4;
+  }
+  .lang-toggle .lt-opt.active {
+    font-weight: 700;
+  }
 </style>
 </head>
 <body>
@@ -549,7 +575,13 @@
     <li><a href="#impact">임팩트</a></li>
     <li><a href="#about">기획자</a></li>
   </ul>
-  <div class="nav-tag">FinTech AI</div>
+  <div style="display:flex;align-items:center;gap:0.6rem;position:relative;z-index:200;">
+    <div class="nav-tag">FinTech AI</div>
+    <button class="lang-toggle" id="langBtn" aria-label="언어 전환">
+      <span class="lt-opt active" id="lt-ko">한</span>
+      <span class="lt-opt" id="lt-en">ENG</span>
+    </button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -635,8 +667,8 @@
 
 <!-- BACKGROUND -->
 <section id="background">
-  <div class="section-label">01 · Background</div>
-  <h2 class="section-title">기획 배경 &<br>서비스 핵심 가치</h2>
+  <div class="section-label" data-i18n="sec01-label">01 · Background</div>
+  <h2 class="section-title" data-i18n="sec01-title">기획 배경 &<br>서비스 핵심 가치</h2>
 
   <div class="bg-grid">
     <div>
@@ -699,8 +731,8 @@
 <section id="features">
   <div class="features-header">
     <div>
-      <div class="section-label">02 · Core Features</div>
-      <h2 class="section-title">3가지<br>핵심 기능</h2>
+      <div class="section-label" data-i18n="sec02-label">02 · Core Features</div>
+      <h2 class="section-title" data-i18n="sec02-title">3가지<br>핵심 기능</h2>
     </div>
     <p class="section-desc">단계별 학습 시스템, 생성형 에이전트 사회, AI 멘토 피드백이 유기적으로 연결되어 "개념 → 실습 → 피드백 → 전략 수정"의 완벽한 순환 학습 루프를 구현합니다.</p>
   </div>
@@ -733,7 +765,7 @@
     <div class="feat-block">
       <div class="feat-num">3</div>
       <div class="feat-icon-wrap">📈</div>
-      <h3>레벨 기반 학습 시스템</h3>
+      <h3 data-i18n="feat3-title">레벨 기반 학습 시스템</h3>
       <p>Beginner → Expert 단계별 구조로 기초부터 심화까지 성장 퀘스트를 설계했습니다. "개념 학습 → 실전 투자 → 피드백 → 전략 수정"의 완벽한 순환 구조를 구현합니다.</p>
       <div class="feat-tags">
         <span class="feat-tag">레벨업 퀘스트</span>
@@ -746,15 +778,15 @@
 
 <!-- TECH CHALLENGES -->
 <section id="tech">
-  <div class="section-label">03 · Technical Challenges</div>
-  <h2 class="section-title">기술 챌린지 &<br>해결 전략</h2>
+  <div class="section-label" data-i18n="sec03-label">03 · Technical Challenges</div>
+  <h2 class="section-title" data-i18n="sec03-title">기술 챌린지 &<br>해결 전략</h2>
   <p class="section-desc">3가지 핵심 기술 문제를 직접 정의하고 해결하여 상용화 가능한 아키텍처를 설계했습니다.</p>
 
   <div class="challenges-grid reveal">
     <div class="challenge-list">
       <div class="challenge-card resolved">
         <div class="ch-num">CHALLENGE 01</div>
-        <h4>LLM API 비용 폭증</h4>
+        <h4 data-i18n="ch1-title">LLM API 비용 폭증</h4>
         <p class="ch-problem">500명 에이전트가 매 틱마다 뉴스를 분석하며 Azure OpenAI 토큰 비용이 급증하는 문제가 발생했습니다.</p>
         <div class="ch-solution-label">해결 전략</div>
         <p class="ch-solution">메타 휴리스틱 기반 워크플로우 최적화 (GA + SA), 프롬프트 압축률 최적화, 동적 라우팅 구조 설계, 자가 검증 노드 배치 구조 개선</p>
@@ -763,7 +795,7 @@
 
       <div class="challenge-card resolved">
         <div class="ch-num">CHALLENGE 02</div>
-        <h4>Human-in-the-Loop 병목</h4>
+        <h4 data-i18n="ch2-title">Human-in-the-Loop 병목</h4>
         <p class="ch-problem">AI 주문 대기열로 인한 사용자 체결 지연이 발생해 체감 UX가 크게 저하되었습니다.</p>
         <div class="ch-solution-label">해결 전략</div>
         <p class="ch-solution">Market Maker 기반 동적 유동성 공급 로직 설계, 정상 호가 범위 내 즉시 체결 구조 구현</p>
@@ -772,7 +804,7 @@
 
       <div class="challenge-card resolved">
         <div class="ch-num">CHALLENGE 03</div>
-        <h4>DB 과부하 & 성능 저하</h4>
+        <h4 data-i18n="ch3-title">DB 과부하 & 성능 저하</h4>
         <p class="ch-problem">trades 테이블 수십만 건 누적으로 Full Table Scan이 발생해 쿼리 성능이 급격히 저하되었습니다.</p>
         <div class="ch-solution-label">해결 전략</div>
         <p class="ch-solution">Timestamp 인덱싱 적용, 거래량 계산 로직 비동기 분리, 메모리 플러시 스크립트 설계</p>
@@ -832,8 +864,8 @@
 
 <!-- IMPACT -->
 <section id="impact">
-  <div class="section-label">04 · Impact & Role</div>
-  <h2 class="section-title">프로젝트 임팩트 &<br>기획 역할</h2>
+  <div class="section-label" data-i18n="sec04-label">04 · Impact & Role</div>
+  <h2 class="section-title" data-i18n="sec04-title">프로젝트 임팩트 &<br>기획 역할</h2>
 
   <div class="stats-row reveal">
     <div class="stat-cell">
@@ -856,7 +888,7 @@
 
   <div class="role-grid reveal">
     <div class="role-card">
-      <h3>👩‍💼 기획 역할 (Planning Role)</h3>
+      <h3 data-i18n="role-title">👩‍💼 기획 역할 (Planning Role)</h3>
       <div class="role-item"><div class="role-dot"></div>인앱 UI/UX 정보 구조(IA) 및 사용자 동선 최적화 설계</div>
       <div class="role-item"><div class="role-dot"></div>AI 멘토 개인화 피드백 UX 및 페르소나 기획</div>
       <div class="role-item"><div class="role-dot"></div>행동경제학 기반 학습 루프 구조화</div>
@@ -865,7 +897,7 @@
     </div>
 
     <div class="role-card">
-      <h3>🏆 핵심 성과 요약</h3>
+      <h3 data-i18n="achieve-title">🏆 핵심 성과 요약</h3>
       <div class="role-item"><div class="role-dot"></div>Azure OpenAI API 비용 49.5% 절감 달성 (Pareto 최적점 도달)</div>
       <div class="role-item"><div class="role-dot"></div>사용자 주문 Sub-second 체결 구조 구현</div>
       <div class="role-item"><div class="role-dot"></div>대규모 생성형 에이전트 기반 상용화 가능 아키텍처 설계</div>
@@ -876,11 +908,11 @@
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="section-label">05 · About</div>
+  <div class="section-label" data-i18n="sec05-label">05 · About</div>
   <div class="about-grid">
     <div>
       <div class="about-name">박소현</div>
-      <div class="about-role">AI PRODUCT PLANNER</div>
+      <div class="about-role" data-i18n="about-role">AI PRODUCT PLANNER</div>
       <p class="about-text">
         FinTech 서비스의 핵심 사용자 문제인 "투자 심리 훈련"을 AI로 해결하고자 EasyStock을 기획했습니다. 단순 기능 기획을 넘어 행동경제학 원리를 서비스 구조에 내재화하고, 기술 제약 속에서 상용화 가능한 아키텍처를 설계하는 데 집중했습니다.
       </p>
@@ -900,21 +932,21 @@
       <div class="h-card">
         <div class="h-icon">🧠</div>
         <div class="h-content">
-          <h4>행동경제학을 서비스 구조로 내재화</h4>
+          <h4 data-i18n="hcard1-title">행동경제학을 서비스 구조로 내재화</h4>
           <p>탐욕·공포·군중심리 등 투자 심리 이론을 에이전트 파라미터와 학습 루프에 직접 설계하여 이론과 실전을 연결했습니다.</p>
         </div>
       </div>
       <div class="h-card">
         <div class="h-icon">💡</div>
         <div class="h-content">
-          <h4>기술 제약을 기회로 전환한 비용 최적화</h4>
+          <h4 data-i18n="hcard2-title">기술 제약을 기회로 전환한 비용 최적화</h4>
           <p>LLM 비용 폭증 문제를 메타 휴리스틱(GA·SA) 기반 워크플로우 최적화로 해결. API 비용 49.5% 절감과 지능 점수 유지를 동시에 달성했습니다.</p>
         </div>
       </div>
       <div class="h-card">
         <div class="h-icon">📐</div>
         <div class="h-content">
-          <h4>PoC에서 상용화 가능 구조로</h4>
+          <h4 data-i18n="hcard3-title">PoC에서 상용화 가능 구조로</h4>
           <p>4-Tier 아키텍처 설계와 Market Maker 기반 유동성 공급 로직으로 대규모 생성형 에이전트 서비스의 상용화 가능성을 검증했습니다.</p>
         </div>
       </div>
@@ -956,5 +988,141 @@
     });
   });
 </script>
+
+<script>
+(function() {
+  var TRANSLATIONS = {
+    ko: {
+    "page-title": `EasyStock — 박소현 AI 프로덕트 기획자`,
+    "hero-sub": `투자 심리 훈련이 없는 초보 투자자를 위한 <strong>AI 에이전트 기반 모의 주식 시뮬레이터</strong>. 행동경제학 + 생성형 AI로 실전 같은 투자 경험을 설계합니다.`,
+    "btn-overview": `📋 프로젝트 개요`,
+    "btn-tech": `🔬 기술 챌린지 보기`,
+    "nav1": `기획배경`,
+    "nav2": `핵심기능`,
+    "nav3": `기술챌린지`,
+    "nav4": `임팩트`,
+    "sec01-label": `01 · Background`,
+    "sec01-title": `기획 배경 &<br>서비스 핵심 가치`,
+    "sec02-label": `02 · Core Features`,
+    "sec02-title": `3가지<br>핵심 기능`,
+    "sec03-label": `03 · Technical Challenges`,
+    "sec03-title": `기술 챌린지 &<br>해결 전략`,
+    "sec04-label": `04 · Impact & Role`,
+    "sec04-title": `프로젝트 임팩트 &<br>기획 역할`,
+    "sec05-label": `05 · About`,
+    "about-role": `AI PRODUCT PLANNER`,
+    "about-text": `FinTech 서비스의 핵심 사용자 문제인 "투자 심리 훈련"을 AI로 해결하고자 EasyStock을 기획했습니다. 단순 기능 기획을 넘어 행동경제학 원리를 서비스 구조에 내재화하고, 기술 제약 속에서 상용화 가능한 아키텍처를 설계하는 데 집중했습니다.`,
+    "role-title": `👩‍💼 기획 역할 (Planning Role)`,
+    "achieve-title": `🏆 핵심 성과 요약`,
+    "hcard1-title": `행동경제학을 서비스 구조로 내재화`,
+    "hcard1-desc": `탐욕·공포·군중심리 등 투자 심리 이론을 에이전트 파라미터와 학습 루프에 직접 설계하여 이론과 실전을 연결했습니다.`,
+    "hcard2-title": `기술 제약을 기회로 전환한 비용 최적화`,
+    "hcard2-desc": `LLM 비용 폭증 문제를 메타 휴리스틱(GA·SA) 기반 워크플로우 최적화로 해결. API 비용 49.5% 절감과 지능 점수 유지를 동시에 달성했습니다.`,
+    "hcard3-title": `PoC에서 상용화 가능 구조로`,
+    "hcard3-desc": `4-Tier 아키텍처 설계와 Market Maker 기반 유동성 공급 로직으로 대규모 생성형 에이전트 서비스의 상용화 가능성을 검증했습니다.`,
+    "ch1-title": `LLM API 비용 폭증`,
+    "ch2-title": `Human-in-the-Loop 병목`,
+    "ch3-title": `DB 과부하 & 성능 저하`,
+    "feat3-title": `레벨 기반 학습 시스템`,
+    "footer-link1": `↑ 맨 위로`,
+    "footer-link2": `기획배경`,
+    "footer-link3": `기술챌린지`
+    },
+    en: {
+    "page-title": `EasyStock — Sohyun Park · AI Product Planner`,
+    "hero-sub": `An <strong>AI agent-based mock stock trading simulator</strong> for beginner investors lacking investment psychology training. Designing real-world investment experiences through behavioral economics + generative AI.`,
+    "btn-overview": `📋 Project Overview`,
+    "btn-tech": `🔬 View Tech Challenges`,
+    "nav1": `Background`,
+    "nav2": `Features`,
+    "nav3": `Tech`,
+    "nav4": `Impact`,
+    "sec01-label": `01 · Background`,
+    "sec01-title": `Planning Background &<br>Core Value`,
+    "sec02-label": `02 · Core Features`,
+    "sec02-title": `3 Core<br>Features`,
+    "sec03-label": `03 · Technical Challenges`,
+    "sec03-title": `Technical Challenges &<br>Solutions`,
+    "sec04-label": `04 · Impact & Role`,
+    "sec04-title": `Project Impact &<br>Planning Role`,
+    "sec05-label": `05 · About`,
+    "about-role": `AI PRODUCT PLANNER`,
+    "about-text": `I planned EasyStock to address "investment psychology training" — the core user problem in FinTech services — through AI. Beyond mere feature planning, I focused on embedding behavioral economics principles into the service structure and designing a commercially viable architecture within technical constraints.`,
+    "role-title": `👩‍💼 Planning Role`,
+    "achieve-title": `🏆 Key Results Summary`,
+    "hcard1-title": `Embedding Behavioral Economics into Service Structure`,
+    "hcard1-desc": `Directly designed investment psychology theories (greed, fear, herd mentality) into agent parameters and learning loops, bridging theory and real-world application.`,
+    "hcard2-title": `Cost Optimization: Turning Constraints into Opportunities`,
+    "hcard2-desc": `Resolved LLM cost explosion through metaheuristic (GA·SA) workflow optimization — achieving 49.5% API cost reduction while maintaining intelligence score simultaneously.`,
+    "hcard3-title": `From PoC to Commercially Viable Structure`,
+    "hcard3-desc": `4-Tier architecture design and Market Maker-based liquidity supply logic verified the commercial viability of large-scale generative agent services.`,
+    "ch1-title": `LLM API Cost Explosion`,
+    "ch2-title": `Human-in-the-Loop Bottleneck`,
+    "ch3-title": `DB Overload & Performance Degradation`,
+    "feat3-title": `Level-Based Learning System`,
+    "footer-link1": `↑ Back to Top`,
+    "footer-link2": `Background`,
+    "footer-link3": `Tech Challenges`
+    }
+  };
+
+  var currentLang = 'ko';
+
+  function applyLang(lang) {
+    var t = TRANSLATIONS[lang];
+    document.documentElement.lang = lang;
+    if (t['page-title']) document.title = t['page-title'];
+
+    // hero-sub
+    var heroSub = document.querySelector('.hero-sub');
+    if (heroSub && t['hero-sub']) heroSub.innerHTML = t['hero-sub'];
+
+    // hero-title (medipair specific)
+    if (t['hero-title-html']) {
+      var ht = document.querySelector('.hero-title');
+      if (ht) ht.innerHTML = t['hero-title-html'];
+    }
+
+    // CTA buttons
+    var ctaBtns = document.querySelectorAll('.hero-cta a');
+    if (ctaBtns[0] && t['btn-overview']) ctaBtns[0].innerHTML = t['btn-overview'];
+    if (ctaBtns[1] && t['btn-tech']) ctaBtns[1].innerHTML = t['btn-tech'];
+
+    // data-i18n elements
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+
+    // toggle button visual
+    var ltKo = document.getElementById('lt-ko');
+    var ltEn = document.getElementById('lt-en');
+    if (ltKo && ltEn) {
+      ltKo.classList.toggle('active', lang === 'ko');
+      ltEn.classList.toggle('active', lang === 'en');
+      ltKo.style.background = lang === 'ko' ? 'var(--accent)' : 'transparent';
+      ltKo.style.color = lang === 'ko' ? '#0a0c0f' : '';
+      ltEn.style.background = lang === 'en' ? 'var(--accent)' : 'transparent';
+      ltEn.style.color = lang === 'en' ? '#0a0c0f' : '';
+    }
+  }
+
+  function toggleLang() {
+    currentLang = currentLang === 'ko' ? 'en' : 'ko';
+    applyLang(currentLang);
+  }
+
+  // attach after DOM ready
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('langBtn');
+    if (btn) btn.addEventListener('click', toggleLang);
+    // init active style
+    applyLang('ko');
+  });
+
+  window.toggleLang = toggleLang;
+})();
+</script>
+
 </body>
 </html>
